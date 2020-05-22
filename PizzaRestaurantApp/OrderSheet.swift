@@ -13,12 +13,32 @@ struct OrderSheet: View {
     @State var name = ""
     @State var company = ""
     @State var position = ""
-    @State var selectedGroupIndex = "-1"
+    @State var selectedGroupIndex = "None"
     
     @State var place = ""
     @State var conv = ""
     @State var align = ""
     @State var help = ""
+    
+//    func loadGroups() -> [Group]? {
+//        let managedContext = appDelegate.managedObjectContext
+//        let fetchRequest = NSFetchRequest(entityName: "CLIENTS")
+//        var mobClients = [NSManagedObject]()
+//        var arrayAllPhoneNumbers = [String]()
+//
+//        do {
+//            let results = try managedContext.executeFetchRequest(fetchRequest)
+//            mobClients = results as! [NSManagedObject]
+//
+//            arrayAllPhoneNumbers = mobClients.map({ clientPhoneNumber in
+//                clientPhoneNumber.valueForKey("clientsMobilePhoneNumber") as! String
+//            })
+//            messageVC.recipients = arrayAllPhoneNumbers
+//        } catch
+//            let error as NSError {
+//                print("Could not fetch \(error), \(error.userInfo)")
+//        }
+//    }
     
     var submitButton: some View {
         Button("Done", action: {
@@ -28,6 +48,7 @@ struct OrderSheet: View {
             newContact.company = self.company
             newContact.position = self.position
             print(self.selectedGroupIndex)
+            newContact.group = self.selectedGroupIndex
             let notes = ["place": self.place, "conv": self.conv, "align": self.align, "help": self.help]
             newContact.notes = notes
             newContact.id = UUID()
@@ -41,7 +62,7 @@ struct OrderSheet: View {
             }
         })
     }
-    
+   
     var body: some View {
         VStack {
             TextField("Name", text: self.$name)
@@ -50,7 +71,10 @@ struct OrderSheet: View {
             TextField("Where did you meet?", text: self.$place)
             TextField("What did you discuss?", text: self.$conv)
             TextField("Anything you can help with?", text: self.$help)
+            
+            
             Picker(selection: $selectedGroupIndex, label: Text("Group")) {
+                Text("None")
                 ForEach(self.allGroups, id: \.type) { group in
                     Text(group.type).tag(group.type)
                 }

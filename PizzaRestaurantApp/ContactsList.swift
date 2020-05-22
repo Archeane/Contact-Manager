@@ -20,10 +20,10 @@ struct ContactsList: View {
     var body: some View {
         NavigationView {
             List {
-//                ForEach(self.allGroups){group in
-//                    Section(header: Text(group.type)){
+                ForEach(self.allGroups){group in
+                    Section(header: Text(group.type)){
                         ForEach(self.allContacts) { contact in
-//                            if contact.group == group.type {
+                            if contact.group == group.type {
                                 HStack {
                                     VStack(alignment: .leading) {
                                         NavigationLink(destination: ContactDetail(contact: contact)){
@@ -32,7 +32,7 @@ struct ContactsList: View {
                                         }
                                     }
                                 }
-//                            }
+                            }
                         }
                         .onDelete { indexSet in
                             for index in indexSet {
@@ -45,8 +45,8 @@ struct ContactsList: View {
                                 }
                             }
                         }
-//                    }
-//                }
+                    }
+                }
             }
             /* List {
                 ForEach(allGroups) { group in
