@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Contact" representedClassName="Contact" syncable="YES">
+        <attribute name="company" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="group" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="Transformable"/>
+        <attribute name="position" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="priority" optional="YES" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Group" representedClassName=".Group" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="members" optional="YES" attributeType="Transformable"/>
+        <attribute name="thankyouTemplate" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Contact" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Group" positionX="-63" positionY="36" width="128" height="103"/>
+    </elements>
+</model>
